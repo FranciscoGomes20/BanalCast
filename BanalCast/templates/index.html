@@ -27,7 +27,11 @@
           <div class="post-preview">
 
             <a href="/post/{{ poste.pk }}">
-              <img src="/static/img/about-bg-01.jpg" class="rounded" hspace="6" width="220" height="225" align="left">
+                {% if poste.imagens_poste %}
+                  <img src="{{ poste.imagens_poste.url }}" class="rounded" hspace="6" width="220" height="225" align="left">
+                {% else %}
+                  <img src="/static/img/about-bg-01.jpg" class="rounded" hspace="6" width="220" height="225" align="left">
+                {% endif %}
               <h1 class="post-title">
                 {{ poste.titulo }}
               </h1>
@@ -49,9 +53,8 @@
               <button type="button" class="btn btn-outline-info">App Podcast</button>
             </a>
 
-            <p class="post-meta">Posted by
-              <a href="#">{{ poste.autor_post }}</a>
-              and the episode released on {{ poste.data_post }}.
+            <p class="post-meta">
+              Posted by {{ poste.autor_post }} and the episode released on {{ poste.data_post }}.
             </p>
 
           </div>
@@ -61,7 +64,7 @@
 
         <!-- Pager -->
         <div class="clearfix">
-        
+
           <ul class="pagination justify-content-center">
             {% if postes.has_previous %}
               <li class="page-item"><a class="page-link" href="?page={{postes.previous_page_number}}">Previous</a></li>
@@ -73,7 +76,7 @@
               {% if postes.number == number %}
                 <li class="page-item active"><a class="page-link" href="?page={{ number }}">{{ number }}</a></li>
               {% else %}
-                <li class="page-item disabled"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ number }}">{{ number }}</a></li>
               {% endif %}
             {% endfor %}
 

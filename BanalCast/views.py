@@ -7,7 +7,7 @@ def index(request):
     postes = Post.objects.all()
     quantidade_poste = len(postes)
 
-    paginator = Paginator(postes, 5)
+    paginator = Paginator(postes, 4)
     page_number = request.GET.get('page', 1)
     pages = paginator.page(page_number)
 
