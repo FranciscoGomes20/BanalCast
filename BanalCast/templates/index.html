@@ -54,37 +54,23 @@
             </a>
 
             <p class="post-meta">
-              Posted by {{ poste.autor_post }} and the episode released on {{ poste.data_post }}.
+              Posted by {{ poste.autor_post }} the episode released on {{ poste.data_post }}.
             </p>
 
           </div>
 
-        <hr>
+          <hr>
         {% endfor %}
 
         <!-- Pager -->
         <div class="clearfix">
-          <ul class="pagination justify-content-center">
-            {% if postes.has_previous %}
-              <li class="page-item"><a class="page-link" href="?page={{ postes.previous_page_number }}">Previous</a></li>
-            {% else %}
-              <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-            {% endif %}
+          {% if postes.has_previous %}
+            <a class="btn btn-primary float-left" href="?page={{ postes.previous_page_number }}">&larr; Previous</a>
+          {% endif %}
 
-            {% for number in postes.paginator.page_range %}
-              {% if postes.number == number %}
-                <li class="page-item active"><a class="page-link" href="?page={{ number }}">{{ number }}</a></li>
-              {% else %}
-                <li class="page-item"><a class="page-link" href="?page={{ number }}">{{ number }}</a></li>
-              {% endif %}
-            {% endfor %}
-
-            {% if postes.has_next %}
-              <li class="page-item"><a class="page-link" href="?page={{ postes.next_page_number }}">Next</a></li>
-            {% else %}
-              <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
-            {% endif %}
-          </ul>
+          {% if postes.has_next %}
+            <a class="btn btn-primary float-right" href="?page={{ postes.next_page_number }}">Next &rarr;</a>
+          {% endif %}
         </div>
       </div>
     </div>
