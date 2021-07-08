@@ -27,3 +27,6 @@ def about(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+def page_error(request):
+    return render(request, '404.html')
