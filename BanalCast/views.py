@@ -7,7 +7,7 @@ def index(request):
     postes = Post.objects.all().reverse()
     quantidade_poste = len(postes)
 
-    paginator = Paginator(postes, 4)
+    paginator = Paginator(postes, 5)
     page_number = request.GET.get('page', 1)
     pages = paginator.page(page_number)
 
@@ -27,6 +27,3 @@ def about(request):
 
 def contact(request):
     return render(request, 'contact.html')
-
-def page_error(request):
-    return render(request, '404.html')
