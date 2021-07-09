@@ -1,6 +1,14 @@
 .img-poste {
     width: 220;
     height: 220;
-    float: left;
     margin: 0 10px;
+}
+
+@media (min-width: 500px) {
+    .img-poste {
+        width: 220;
+        height: 220;
+        margin: 0 10px;
+        float: left;
+    }
 }

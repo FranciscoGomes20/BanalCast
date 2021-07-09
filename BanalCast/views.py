@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 def index(request):
-    postes = Post.objects.all().reverse()
+    postes = Post.objects.all().reverse()[:10]
     quantidade_poste = len(postes)
 
     paginator = Paginator(postes, 5)
